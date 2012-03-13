@@ -10,6 +10,7 @@ $.fn.large_background_transition = (image_list, options) ->
 	options = $.extend defaults, options
 	
 	loaded_images = []
+	current_image = 0
 	
 	templates =
 		holder:	(scale)->
@@ -58,7 +59,15 @@ $.fn.large_background_transition = (image_list, options) ->
 	
 	
 	transition_background	=	->
-		#transition background
+		$current_image	= $('#'+current_image)
+		if (current_image + 1) is loaded_images.length
+			current_image = 0
+		else
+			current_image += 1
+		$next_image		= $('#'+current_image)
+		$next_image.addClass('active')
+		$current_image.removeClass('active')
+		window.transition_timeout = window.setTimeout transition_background, options.transition_delay
 	
 	
 	this.append templates.holder options.scale

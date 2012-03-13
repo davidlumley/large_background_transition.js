@@ -1,7 +1,7 @@
 (function() {
 
   $.fn.large_background_transition = function(image_list, options) {
-    var $holder, $window, defaults, load_images, loaded_images, on_resize, resize_background, templates, transition_background;
+    var $holder, $window, current_image, defaults, load_images, loaded_images, on_resize, resize_background, templates, transition_background;
     defaults = {
       resize_delay: 20,
       transition_delay: 5000,
@@ -11,6 +11,7 @@
     };
     options = $.extend(defaults, options);
     loaded_images = [];
+    current_image = 0;
     templates = {
       holder: function(scale) {
         return '<div id="large_background_transition_holder" class="' + scale + '"></div>';
@@ -63,7 +64,19 @@
       }
       return _results;
     };
-    transition_background = function() {};
+    transition_background = function() {
+      var $current_image, $next_image;
+      $current_image = $('#' + current_image);
+      if ((current_image + 1) === loaded_images.length) {
+        current_image = 0;
+      } else {
+        current_image += 1;
+      }
+      $next_image = $('#' + current_image);
+      $next_image.addClass('active');
+      $current_image.removeClass('active');
+      return window.transition_timeout = window.setTimeout(transition_background, options.transition_delay);
+    };
     this.append(templates.holder(options.scale));
     $window = $(window);
     $holder = $('#large_background_transition_holder');
