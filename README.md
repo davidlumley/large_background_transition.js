@@ -58,6 +58,7 @@ In jQuery's document ready handler define your list of images, and pass them to 
 		return $('body').large_background_transition(image_list);
 	})
 
+###	Function Options
 
 The `large_background_transition` takes a hash of options. You can set the following parameters:
 
