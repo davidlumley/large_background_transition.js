@@ -11,6 +11,8 @@
         'src': 'images/3.jpg'
       }, {
         'src': 'images/4.jpg'
+      }, {
+        'src': 'images/5.jpg'
       }
     ];
     return $('body').large_background_transition(image_list);

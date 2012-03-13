@@ -12,5 +12,8 @@ $ ->
 		{
 			'src':	'images/4.jpg'
 		}
+		{
+			'src':	'images/5.jpg'
+		}
 	]
 	$('body').large_background_transition(image_list)
