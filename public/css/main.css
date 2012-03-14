@@ -5,36 +5,3 @@ body {
   height: 100%;
   width: 100%;
 }
-#large_background_transition_holder {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
-.large_background_transition_image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-}
-.large_background_transition_image.active {
-  z-index: 5;
-}
-.large_background_transition_image img {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-.large_background_transition_image img.loading {
-  display: none;
-}
-.height .large_background_transition_image img {
-  height: 100%;
-}
-.width .large_background_transition_image img {
-  width: 100%;
-}

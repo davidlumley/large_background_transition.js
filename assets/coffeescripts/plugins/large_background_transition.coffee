@@ -3,6 +3,7 @@ $.fn.large_background_transition = (image_list, options) ->
 	defaults =
 		resize_delay:		20
 		transition_delay:	5000
+		fade_duration:		1000
 		image_height:		1080
 		image_width:		1920
 		scale:	'height'
@@ -11,6 +12,7 @@ $.fn.large_background_transition = (image_list, options) ->
 	
 	loaded_images = []
 	current_image = 0
+	previous_image = 0
 	
 	templates =
 		holder:	(scale)->
@@ -59,15 +61,40 @@ $.fn.large_background_transition = (image_list, options) ->
 	
 	
 	transition_background	=	->
-		$current_image	= $('#'+current_image)
+		$current_image	= $('#'+loaded_images[current_image])
 		if (current_image + 1) is loaded_images.length
 			current_image = 0
 		else
 			current_image += 1
-		$next_image		= $('#'+current_image)
-		$next_image.addClass('active')
+		$next_image		= $('#'+loaded_images[current_image])
+		
+		###
+		#	no fade in
+		###
+		###
 		$current_image.removeClass('active')
+		$next_image.addClass('active')
+		
 		window.transition_timeout = window.setTimeout transition_background, options.transition_delay
+		###
+		
+		###
+		#	fade in
+		###
+		$next_image.fadeIn options.fade_duration, ->
+			previous_image = current_image - 1
+			if previous_image < 0
+				previous_image = loaded_images.length - 1
+			$current_image	= $(@)
+			$previous_image	= $('#'+loaded_images[previous_image])
+			
+			$previous_image.removeClass	'active'
+			$previous_image.hide()
+			$current_image.addClass		'active'
+			
+			window.transition_timeout = window.setTimeout transition_background, options.transition_delay
+		
+	
 	
 	
 	this.append templates.holder options.scale
