@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Large background transition.js by davidlumley</title>
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Large background transition.js</h1>
+        <p>jQuery plugin that creates large background transitions.</p>
+        <p class="view"><a href="https://github.com/davidlumley/large_background_transition.js">View the Project on GitHub <small>davidlumley/large_background_transition.js</small></a></p>
+        <ul>
+          <li><a href="https://github.com/davidlumley/large_background_transition.js/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/davidlumley/large_background_transition.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/davidlumley/large_background_transition.js">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>large_background_transition.js</h1>
+
+<p>jQuery plugin that creates large background transitions.</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>  jQuery</li>
+<li>  some nice background images</li>
+</ul><h2>Usage</h2>
+
+<p>Include jQuery and large_background_transition.js</p>
+
+<pre><code>&lt;script type="text/javascript" charset="utf-8" src="javascripts/library/jquery-1.7.1.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" charset="utf-8" src="javascripts/plugins/large_background_transition.js"&gt;&lt;/script&gt;
+</code></pre>
+
+<p>In jQuery's document ready handler define your list of images, and pass them to the <code>large_background_transition</code> function.</p>
+
+<p>You'll also want to include the CSS to lay things out properly.</p>
+
+<pre><code>&lt;link rel="stylesheet" href="css/large_background_transition.css" type="text/css" media="screen" charset="utf-8"&gt;
+</code></pre>
+
+<h3>CoffeeScript</h3>
+
+<pre><code>$ -&gt;
+    image_list = [
+        {
+            'src':  'images/1.jpg'
+        }
+        {
+            'src':  'images/2.jpg'
+        }
+        {
+            'src':  'images/3.jpg'
+        }
+        {
+            'src':  'images/4.jpg'
+        }
+        {
+            'src':  'images/5.jpg'
+        }
+    ]
+    $('body').large_background_transition(image_list)
+</code></pre>
+
+<h3>JavaScript</h3>
+
+<pre><code>$(function() {
+    var image_list;
+    image_list = [
+        {
+            'src': 'images/1.jpg'
+        }, {
+            'src': 'images/2.jpg'
+        }, {
+            'src': 'images/3.jpg'
+        }, {
+            'src': 'images/4.jpg'
+        }, {
+            'src': 'images/5.jpg'
+        }
+    ];
+    return $('body').large_background_transition(image_list);
+})
+</code></pre>
+
+<h3>Function Options</h3>
+
+<p>The <code>large_background_transition</code> takes a hash of options. You can set the following parameters:</p>
+
+<pre><code>resize_delay:       20          -   delay between window resize events, and changing how the image scales
+transition_delay:   5000        -   delay between image transitions
+fade_duration:      1000        -   duration of an image transition
+image_height:       1080        -   height of the images
+image_width:        1920        -   width of the images
+scale:              'height'    -   default type of image scaling, alternative is 'width'
+</code></pre>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/davidlumley">davidlumley</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
